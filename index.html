@@ -1,26 +1,42 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <link rel="stylesheet" href="main.css">
+  <title>Marks Knockout App</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
 
-  <div class="container">
-  <div class="options-box">
-    <h1>Find Your New NYC Home</h1>
-    <div>
-      <input id="show-listings" type="button" value="Show Listings">
-      <input id="hide-listings" type="button" value="Hide Listings">
-    </div>
+  <div class="container-fluid">
+  <div class="row">
+    <input id="myInput" type="text" class="col-sm-2" data-bind="textInput: searchBar, valueUpdate: 'afterkeydown'" placeholder="Search" />
+    <h1>Reno Tavern's</h1>
+  </div>
+  <div class="row">
+    <ul id="myUL" class="col-xs-2" data-bind="foreach: locations">
+      <li>
+        <a href="#" data-bind="text: title, visible: visibility, click: $root.clickEvent" class="listItem"></a>
+      </li>
+    </ul>
+
+
+
+
+
+
+
+      <div id="map" class="col-sm-8"></div>
+      </div>
   </div>
 
-  <div id="map"></div>
   </div>
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.2/knockout-debug.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.2/knockout-min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script type="text/javascript" src="main.js"></script>
-  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCa4i9pps0X4YAXZb2SdFnuynNh5g0QJWM&callback=initMap">
+  <script type="text/javascript" src="js/main.js"></script>
+  <script type="text/javascript" src="js/vm.js"></script>
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCa4i9pps0X4YAXZb2SdFnuynNh5g0QJWM&callback=initMap" onerror="mainApiError()">
   </script>
 </body>
 </html>
